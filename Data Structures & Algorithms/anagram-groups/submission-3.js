@@ -1,0 +1,23 @@
+class Solution {
+    /**
+     * @param {string[]} strs
+     * @return {string[][]}
+     */
+    groupAnagrams(strs) {
+        const map = new Map();
+        for (const str of strs) {
+            const sign = new Array(26).fill(1);
+            for (const ch of str) {
+                sign[ch.charCodeAt() - "a".charCodeAt()]++;
+            }
+            const key = sign.join("");
+            if (!map.has(key)){
+                map.set(key, [])
+            }
+            map.get(key).push(str)
+            console.log(key)
+        }
+        
+        return [...map.values()];
+    }
+}
