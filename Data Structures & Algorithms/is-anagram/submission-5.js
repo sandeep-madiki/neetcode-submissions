@@ -1,0 +1,31 @@
+class Solution {
+    /**
+     * @param {string} s
+     * @param {string} t
+     * @return {boolean}
+     */
+    isAnagram(s, t) {
+        if (s.length !== t.length) {
+            return false;
+        }
+        const smap = {};
+        for (let i of s) {
+           smap[i] = (smap[i] || 0) + 1
+        }
+        for (let i of t) {
+            if (!i in smap){
+                return false
+            } else {
+                smap[i] = smap[i] - 1
+            }
+        }
+
+        for (const key in smap) {
+            if (smap[key] !== 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
